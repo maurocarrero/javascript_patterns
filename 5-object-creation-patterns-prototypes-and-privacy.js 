@@ -1,0 +1,26 @@
+var pp,
+	Person = function (spec) {
+		var name = 'Private member';
+		this.getName = function () {
+			return name;
+		};
+	};
+
+
+// ADDING AN IMMEDIATE FUNCTION AS THE PROTOTYPE, PROVIDES US WITH A 
+// PRIVATE CONTEXT FOR THE PROTOTYPE, THIS WAY THE PRIVATE VALUES THAT MUST BE SHARED AMONG 
+// ALL THE INSTANCES OF PERSON CAN BE INITIALIZED ONLY ONCE ON THE OBJECT CONSTRUCTION
+
+Person.prototype = (function () {
+	var color = 'Verde';
+	return {
+		getColor: function () {
+			return color;
+		}
+	};
+})();
+
+pp = new Person({name: 'Pepe'});
+
+console.log('pp.getName():', pp.getName());
+console.log('pp.getColor():', pp.getColor());
