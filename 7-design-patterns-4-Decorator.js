@@ -9,8 +9,9 @@ Sale.prototype.getPrice = function () {
 	return this.price;
 }
 Sale.prototype.decorate = function (decorator) {
-	var F = function () {};
-	
+	var F = function () {},
+		overrides = this.constructor.decorators[decorator];
+
 
 }
 
